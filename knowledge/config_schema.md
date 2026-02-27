@@ -7,7 +7,7 @@
 
 | 字段 | 类型 | 说明 |
 |------|------|------|
-| `model` | string | 模型名称，如 `"gpt-5.2"` |
+| `model` | string | 模型名称，如 `"gpt-5.3-codex"` |
 | `model_provider` | string | `model_providers` map 中的 key |
 | `model_reasoning_effort` | enum | `none` / `minimal` / `low` / `medium` / `high` / `xhigh` |
 | `model_reasoning_summary` | enum | `auto` / `concise` / `detailed` / `none` |
@@ -131,7 +131,7 @@ title = f"Codex: {notification.get('last-assistant-message', 'Turn Complete!')}"
 2. 脚本通知 OpenClaw agent（通过 Telegram/sessions_send/webhook）
 3. Agent 被唤醒，去检查 Codex 的输出
 4. 不满意则继续发指令，Codex 再次完成 turn 又触发 notify
-5. 循环直到满意，向涛哥汇报
+5. 循环直到满意，向用户汇报
 
 ## TUI 通知
 
@@ -289,7 +289,7 @@ ignore_large_untracked_files = 1048576
 ```toml
 [profiles.<name>]
 model = "..."
-model_reasoning_effort = "high"
+model_reasoning_effort = "xhigh"
 sandbox_mode = "workspace-write"
 # ... 支持 ConfigProfile 的所有字段
 ```

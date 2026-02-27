@@ -120,9 +120,10 @@
 |------|------|
 | `codex` | 交互模式（完全体 TUI） |
 | `codex exec` / `codex e` | 非交互式单次执行 |
+| `codex exec resume` | 恢复非交互式会话（支持 `--last` 或指定 `SESSION_ID`） |
 | `codex review` | 非交互式代码审查 |
 | `codex apply` / `codex a` | 应用最近一次 diff 到本地 |
-| `codex resume` | 恢复之前的会话（`--last` 恢复最近） |
+| `codex resume` | 恢复交互式会话（TUI，`--last` 恢复最近） |
 | `codex fork` | 分叉之前的会话 |
 | `codex cloud` | [EXPERIMENTAL] 浏览 Codex Cloud 任务 |
 | `codex mcp` | 管理 MCP servers |

@@ -36,12 +36,27 @@ codex [OPTIONS] [PROMPT]
 codex exec [OPTIONS] [PROMPT]
 ```
 
-额外选项：
+常用选项：
 - `--skip-git-repo-check`：允许在非 git 目录运行
 - `--ephemeral`：不持久化 session
 - `--json`：以 JSONL 格式输出事件
 - `-o, --output-last-message <FILE>`：将最后一条消息写入文件
 - `--output-schema <FILE>`：指定输出 JSON Schema
+
+恢复非交互式会话：
+
+```bash
+codex exec resume [--last] [SESSION_ID] [PROMPT]
+```
+
+速查：
+
+| 场景 | 命令 |
+|------|------|
+| 首次执行 | `codex exec "<prompt>"` |
+| 继续最近一次 | `codex exec resume --last "<followup_prompt>"` |
+| 精确恢复 | `codex exec resume <SESSION_ID> "<followup_prompt>"` |
+| 跨目录恢复 | `codex exec resume --all <SESSION_ID> "<followup_prompt>"` |
 
 ### `codex review` （代码审查）
 非交互式代码审查。
@@ -56,7 +71,7 @@ codex review [OPTIONS] [PROMPT]
 - `--commit <SHA>`：审查指定 commit
 
 ### `codex resume` / `codex fork`
-恢复或分叉之前的 session。
+恢复或分叉之前的**交互式** session（TUI）。
 
 ```bash
 codex resume [--last]
@@ -81,8 +96,8 @@ codex fork [--last]
 ```toml
 # 模型配置
 model_provider = "custom"
-model = "gpt-5.2"
-model_reasoning_effort = "medium"
+model = "gpt-5.3-codex"
+model_reasoning_effort = "xhigh"
 
 # 自定义 provider
 [model_providers.custom]
